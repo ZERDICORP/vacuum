@@ -6,7 +6,7 @@ from modules.enc import ENC
 # connect to mongoDB
 try:
 	mongoClient = pymongo.MongoClient(
-		"mongodb+srv://admin1:authp4assadmin1@enc01.jp9b3.mongodb.net/vacuum?retryWrites=true&w=majority",
+		"<mongo auth url>",
 		serverSelectionTimeoutMS=1
 	)
 	db = mongoClient.vacuum
