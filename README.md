@@ -3,4 +3,14 @@ Vacuum is not a very successful attempt to create an encrypted online chat, but 
 
 Command to run: _python main.pyw_
 
-![alt text](https://sun9-68.userapi.com/impf/FcxflR0WcFdbzPH-IPdmQzpViOM2VYCP0YDzpQ/VXObJHqYvRg.jpg?size=1280x719&quality=96&sign=9cf775aceffd8385715ffbf242fcfa86&type=album)
+![alt text](https://github.com/ZERDICORP/vacuum/blob/master/screenshots/s1.jpg?row=true)
+
+![alt text](https://github.com/ZERDICORP/vacuum/blob/master/screenshots/s2.jpg?row=true)
+
+![alt text](https://github.com/ZERDICORP/vacuum/blob/master/screenshots/s3.jpg?row=true)
+
+![alt text](https://github.com/ZERDICORP/vacuum/blob/master/screenshots/s4.jpg?row=true)
+
+![alt text](https://github.com/ZERDICORP/vacuum/blob/master/screenshots/s5.jpg?row=true)
+
+![alt text](https://github.com/ZERDICORP/vacuum/blob/master/screenshots/s6.jpg?row=true)
