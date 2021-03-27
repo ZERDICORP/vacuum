@@ -32,7 +32,9 @@ if __name__ == '__main__':
 		connector = Connector(db, models, enc) # (←) [-connector with database-]
 		client = Client(connector, enc) # (←) [-client-]
 		connector.setClient(client) # (←) [-set client object to connector-]
-		#checkLog(connector)
+		if len(sys.argv) > 1:
+			if sys.argv[1] == "-c":
+				checkLog(connector)
 	app = QtWidgets.QApplication(sys.argv) # (←) [-app object-]
 	builder = Builder(app, client) # (←) [-initialize ui builder-]
 	builder.show() # (←) [-start showing-]

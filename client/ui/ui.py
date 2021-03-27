@@ -19,6 +19,9 @@ class UI(QtWidgets.QMainWindow, Styles):
 			"RobotoLight": QtGui.QFontDatabase.addApplicationFont("client/static/fonts/Roboto-Light.ttf")
 		})
 
+	def exit(self):
+		exit()
+
 	def closeEvent(self, event):
 		if self.client.bias:
 			ifAdmin = f'\nBias "{self.client.bias.name}" will be deleted..' if self.client.admin else "\nAll messages will disappear.."
@@ -26,13 +29,13 @@ class UI(QtWidgets.QMainWindow, Styles):
 			answer = QtWidgets.QMessageBox.question(self, 'info', f"Do you realy want to exit? {ifAdmin}", QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
 			if answer == QtWidgets.QMessageBox.Yes:
 				self.client.disconnectFromBias()
-				exit()
+				self.exit()
 			elif answer == QtWidgets.QMessageBox.No:
 				event.ignore()
 			elif answer == QtWidgets.QMessageBox.Close:
 				event.ignore()
 		else:
-			exit()
+			self.exit()
 
 	def question(self, text, action):
 		answer = QtWidgets.QMessageBox.question(self, 'info', text, QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)

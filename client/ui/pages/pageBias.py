@@ -65,7 +65,7 @@ class PageBias(object):
 			align=(QtCore.Qt.AlignCenter), styles=None)
 		# (↓) [-button "disconnect"-]
 		self.ui.button(pageWidget, text="disconnect", iconType=self.ui.iconTypes.DISCONNECT, fontSize=10, geometry=(8, 10, 100, 23), 
-			action=lambda: self.disconnect, disabled=False)
+			action=self.disconnect, disabled=False)
 
 		QtWidgets.QShortcut(QtGui.QKeySequence("Ctrl+B"), pageWidget).activated.connect(self.disconnect)
 		QtWidgets.QShortcut(QtGui.QKeySequence("Space"), pageWidget).activated.connect(lambda: inputMessage.setFocus(True))

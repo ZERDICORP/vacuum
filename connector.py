@@ -3,7 +3,7 @@ import pymongo, copy
 # (↓) [-object id object for bias ids-]
 from bson.objectid import ObjectId
 from modules.logger import Logger, LogRequest
-from modules.types import ActionTypes, LogTypes
+from modules.types import ActionTypes, LogTypes, ExceptionTypes
 
 class Connector(object):
 	def __init__(self, db, models, enc):
@@ -83,29 +83,29 @@ class Connector(object):
 		response = None
 		kwargs = edict(kwargs)
 		# (↓) [-do some function by action type-]
-		#try:
-		if kwargs.actionType == ActionTypes.UPDATE_MESSAGES:
-			response = self.updateMessages(kwargs.newMessages)
-		elif kwargs.actionType == ActionTypes.DELETE_MESSAGE:
-			response = self.deleteMessage(kwargs.id)
-		elif kwargs.actionType == ActionTypes.SEND_MESSAGE:
-			del kwargs["actionType"]
-			response = self.sendMessage(**kwargs)
-		elif kwargs.actionType == ActionTypes.UPDATE_GHOSTS:
-			response = self.updateGhosts(kwargs.ghosts)
-		elif kwargs.actionType == ActionTypes.DISCONNECT:
-			response = self.disconnect(kwargs.ghostId)
-		elif kwargs.actionType == ActionTypes.CONNECT_TO_BIAS:
-			response = self.connectToBias(kwargs.biasName)
-		elif kwargs.actionType == ActionTypes.DELETE_BIAS:
-			response = self.deleteBias(kwargs.biasId)
-		elif kwargs.actionType == ActionTypes.CREATE_BIAS:
-			response = self.createBias(kwargs.biasName)
-		elif kwargs.actionType == ActionTypes.GET_BIAS:
-			response = self.getBias(kwargs.biasName)
-		elif kwargs.actionType == ActionTypes.GET_BIASES:
-			response = self.getBiases()
-		#except pymongo.errors.ConnectionFailure: # (←) [-internet connection error-]
-		#	self.client.forcedExit("noInternetConnection") # (←) [-call force exit in client-]
+		try:
+			if kwargs.actionType == ActionTypes.UPDATE_MESSAGES:
+				response = self.updateMessages(kwargs.newMessages)
+			elif kwargs.actionType == ActionTypes.DELETE_MESSAGE:
+				response = self.deleteMessage(kwargs.id)
+			elif kwargs.actionType == ActionTypes.SEND_MESSAGE:
+				del kwargs["actionType"]
+				response = self.sendMessage(**kwargs)
+			elif kwargs.actionType == ActionTypes.UPDATE_GHOSTS:
+				response = self.updateGhosts(kwargs.ghosts)
+			elif kwargs.actionType == ActionTypes.DISCONNECT:
+				response = self.disconnect(kwargs.ghostId)
+			elif kwargs.actionType == ActionTypes.CONNECT_TO_BIAS:
+				response = self.connectToBias(kwargs.biasName)
+			elif kwargs.actionType == ActionTypes.DELETE_BIAS:
+				response = self.deleteBias(kwargs.biasId)
+			elif kwargs.actionType == ActionTypes.CREATE_BIAS:
+				response = self.createBias(kwargs.biasName)
+			elif kwargs.actionType == ActionTypes.GET_BIAS:
+				response = self.getBias(kwargs.biasName)
+			elif kwargs.actionType == ActionTypes.GET_BIASES:
+				response = self.getBiases()
+		except pymongo.errors.ConnectionFailure: # (←) [-internet connection error-]
+			self.client.forcedExit(ExceptionTypes.NO_INTERNET_CONNECTION) # (←) [-call force exit in client-]
 		# (↓) [-return response-]
 		return response

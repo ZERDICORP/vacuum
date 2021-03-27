@@ -18,8 +18,8 @@ class PageMenu(object):
 		self.ui.button(pageWidget, text="Create bias", iconType=self.ui.iconTypes.CREATE, fontSize=18, geometry=(180, 250, 240, 50), 
 			action=self.ui.pageCreate.show, disabled=False)
 		self.ui.button(pageWidget, text="Exit", iconType=self.ui.iconTypes.EXIT, fontSize=18, geometry=(180, 320, 240, 50), 
-			action=exit, disabled=False)
+			action=self.ui.exit, disabled=False)
 
 		QtWidgets.QShortcut(QtGui.QKeySequence("1"), pageWidget).activated.connect(self.ui.pageConnect.show)
 		QtWidgets.QShortcut(QtGui.QKeySequence("2"), pageWidget).activated.connect(self.ui.pageCreate.show)
-		QtWidgets.QShortcut(QtGui.QKeySequence("3"), pageWidget).activated.connect(exit)
+		QtWidgets.QShortcut(QtGui.QKeySequence("3"), pageWidget).activated.connect(self.ui.exit)

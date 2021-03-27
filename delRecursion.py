@@ -17,4 +17,4 @@ def delRecursion(dir, name):
 if __name__ == "__main__":
 	del args[0]
 	delRecursion(dir="./", name=args[0])
-	print(f"Success delete {count} objects with name \"{args[0]}\"")
+	print(f"\nSuccess delete {count} objects with name \"{args[0]}\"")
