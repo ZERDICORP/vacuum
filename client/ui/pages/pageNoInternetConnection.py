@@ -12,4 +12,4 @@ class PageNoInternetConnection(object):
 
 		self.ui.label(pageWidget, text="No internet connection..", fontSize=18, geometry=(0, 280, 600, 40), 
 			align=(QtCore.Qt.AlignCenter), styles=None)
-		self.ui.button(pageWidget, text="exit", iconType=self.ui.iconTypes.EXIT, fontSize=12, geometry=(260, 335, 90, 30), action=exit, disabled=False)
+		self.ui.button(pageWidget, text="exit", iconType=self.ui.iconTypes.EXIT, fontSize=12, geometry=(260, 335, 90, 30), action=self.ui.exit, disabled=False)
