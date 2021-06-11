@@ -1,3 +1,4 @@
+from sys import exit
 from PyQt5 import QtWidgets, QtGui, QtCore
 from client.ui.main import Ui_MainWindow # (←) [-main window-]
 from client.ui.styles import Styles # (←) [-styles for components-]
