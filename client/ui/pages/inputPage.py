@@ -37,7 +37,7 @@ class InputPage(object):
 		self.inputLine.returnPressed.connect(lambda: checkValidate(None, isClicked=True))
 
 		self.errorTablo = self.ui.label(pageWidget, text="", fontSize=10, geometry=(149, 261, 221, 31), 
-			align=(QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter), styles=""" color: red; """)
+			align=(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter), styles=""" color: red; """)
 
-		self.ui.button(pageWidget, text=bText, iconType=iconType, fontSize=16, geometry=(380, 230, 120, 31), action=lambda: checkValidate(None, isClicked=True), 
-			disabled=isValidateError())
+		self.ui.button(pageWidget, text=bText, iconType=iconType, fontSize=16, geometry=(380, 230, 120, 31),
+			action=lambda: checkValidate(None, isClicked=True), disabled=isValidateError())

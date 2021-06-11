@@ -36,10 +36,11 @@ class Validator(object):
 			else:
 				if isClicked and self.objectName in ["connectBiasName", "createBiasName"]:
 					biases = self.client.getBiases()
+					coincidences = [edict(bias) for bias in biases if edict(bias).name == value]
 					# (↓) [-if this name used in "connect to bias" page-]
 					if self.objectName == "connectBiasName":
 						# (↓) [-if this bias name not in database-]
-						if all(edict(bias).name != value for bias in biases) or not biases:
+						if not coincidences or (coincidences and len(coincidences[0].ghosts) == 2):
 							self.setError(self.errorTypes.biasNotFound.format(value)) # (←) [-add error-]
 						# (↓) [-if this bias name in database-]
 						else:
@@ -47,7 +48,7 @@ class Validator(object):
 					# (↓) [-if this name used in "create bias" page-]
 					elif self.objectName == "createBiasName":
 						# (↓) [-if this bias name in database-]
-						if biases and any(edict(bias).name == value for bias in biases):
+						if coincidences:
 							self.setError(self.errorTypes.biasAlredyExists.format(value)) # (←) [-add error-]
 						# (↓) [-if this bias name not in database-]
 						else:
